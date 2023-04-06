@@ -1,0 +1,12 @@
+a.) Redirect http://stapp03.stratos.xfusioncorp.com:<Port>/ to http://www.stapp03.stratos.xfusioncorp.com:<Port>/ i.e non www to www. This must be a permanent redirect i.e 301
+b.) Redirect http://www.stapp03.stratos.xfusioncorp.com:<Port>/blog/ to http://www.stapp03.stratos.xfusioncorp.com:<Port>/news/. This must be a temporary redirect i.e 302.
+
+<VirtualHost *:8083>
+ServerName http://stapp03.stratos.xfusioncorp.com
+Redirect 301 / http://www.stapp03.stratos.xfusioncorp.com:8083/
+</VirtualHost>
+
+<VirtualHost *:8083>
+ServerName http://www.stapp03.stratos.xfusioncorp.com
+Redirect 302 /blog/ http://www.stapp03.stratos.xfusioncorp.com:8083/news/
+</VirtualHost>
